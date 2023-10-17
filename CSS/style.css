@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+:root {
+    --fColor: rgb(255, 179, 0);
+}
+
+a {
+    text-decoration: none !important;
+}
+
+ul {
+    list-style: none !important;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 35px 0;
+    background-color: white;
+    width: 100%;
+}
+
+.logo {
+    width: 150px;
+}
+
+.list {
+    display: block;
+}
+
+.list li {
+    display: inline-block;
+}
+
+.list li:not(li:nth-child(1)) {
+    margin-left: 15px;
+}
+
+.list li a {
+    padding: 10px;
+    color: black;
+    font-weight: 700;
+    transition: 0.5s;
+}
+
+.list li a:hover {
+    color: var(--fColor);
+}
+
+.list li:first-child a {
+    color: var(--fColor);
+}
+
+.toggle .bar {
+    display: none;
+}
+
+.header-icons {
+    display: flex;
+}
+
+#user_info {
+    display: none;
+}
+
+.user-icons .shopCart {
+    position: relative;
+}
+
+.user-icons #user {
+    color: var(--fColor);
+    font-weight: 600;
+}
+
+.header-icons li:not(:first-child),
+.user-icons li:not(:first-child) {
+    margin-left: 10px;
+}
+
+.header-icons a,
+.user-icons a {
+    font-size: 20px;
+    color: black;
+    transition: 0.5s;
+}
+
+.header-icons a:hover,
+.user-icons a:hover {
+    color: var(--fColor);
+}
+
+.header-icons a:not(li:nth-child(1)),
+.user-icons a:not(li:nth-child(1)) {
+    margin-left: 20px;
+}
+
+.user-icons .badge {
+    position: absolute;
+    left: 33px;
+    top: 15px;
+    font-weight: 900 !important;
+    font-size: 16px;
+    color: var(--fColor);
+}
+.cart_product {
+    position: absolute;
+    top: 65px;
+    border: 2px solid var(--fColor);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transform: translate(-45%, 0);
+    width: 350px;
+    display: none;
+}
+.cart_product div {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.cart_product div::-webkit-scrollbar {
+    display: none;
+}
+
+.cart_product a {
+    display: block;
+    color: white;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--fColor);
+}
+
+.cart_product a:hover {
+    color: white;
+}
+
+.minus,
+.plus {
+    color: var(--fColor);
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.login-header {
+    justify-content: space-between;
+    padding: 30px 150px;
+}
+
+.login-header .list li a {
+    color: black;
+    font-weight: 800;
+}
+
+.login-header .list li a:hover {
+    color: var(--fColor);
+}
+
+.section-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    border-radius: 5px;
+    padding: 50px 30px;
+}
+
+.section-form h2 {
+    color: var(--fColor);
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.section-form form label {
+    font-weight: 700;
+    width: 20%;
+    margin-left: 90px;
+    margin-bottom: 7px;
+}
+
+.section-form form input {
+    display: block;
+    width: 70%;
+    margin: auto;
+    padding: 7px 30px;
+    margin-bottom: 20px;
+    outline: none;
+    border: 1px solid var(--fColor);
+    border-radius: 7px;
+}
+
+.section-form form input:last-child {
+    width: 30%;
+    margin: auto;
+    background-color: white;
+    background-color: var(--fColor);
+    color: white;
+    font-weight: 600;
+
+}
+
+.section-form form .access {
+    color: var(--fColor);
+    font-weight: 600;
+}
+
+::placeholder {
+    color: rgba(128, 128, 128, 0.479);
+}
+
+.toggle {
+    position: relative;
+}
+
+.toggle li {
+    position: absolute;
+    top: -10px;
+    right: 5px;
+}
+
+@media (max-width:900px) {
+    header {
+        padding: 35px 10px !important;
+    }
+
+    .toggle .bar {
+        display: block;
+    }
+
+    #barToggle2 {
+        display: none;
+    }
+
+    .toggle .bar a {
+        font-size: 30px;
+        color: var(--fColor);
+    }
+
+    .header-icons {
+        display: none;
+    }
+
+    .list {
+        position: absolute;
+        background-color: black;
+        width: 100%;
+        height: 300px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 85px;
+        text-align: center;
+        line-height: 3;
+        transition: 1s;
+        display: none;
+    }
+
+    .list li {
+        display: block;
+        margin-bottom: 10px;
+        text-align: center;
+        margin-right: 15px;
+    }
+
+    .list li a {
+        padding: 10px !important;
+        color: white;
+
+    }
+
+    .list li:first-child {
+        margin-left: 15px;
+    }
+
+
+}
+
+main .search-box {
+    width: 42%;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+main .search-box #selection {
+    border: none;
+    outline: none;
+    padding: 7px 20px !important;
+}
+
+main .search-box #selection option {
+    background-color: black;
+    color: white;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+main .search {
+    width: 55%;
+    padding: 5px 20px;
+    outline: none;
+    border: none;
+}
+
+main .searchIcon {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 20px;
+    color: var(--fColor);
+}
+
+main .productImage {
+    width: 50%;
+}
+
+main .product-item {
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 30px 0;
+    position: relative;
+    transition: all ease-in 1s;
+}
+
+
+main .product-item .product-item-info a {
+    color: black;
+}
+
+main .product-item .product-item-info a:not(.favIcon):hover {
+    transition: 0.5s;
+    color: var(--fColor);
+}
+
+main .product-item .product-item-info .productRate i {
+    color: var(--fColor);
+}
+
+main .product-item .product-item-info .productBtn {
+    background-color: var(--fColor);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+}
+
+main .product-item .product-item-info .productBtn:hover {
+    background-color: black;
+}
+
+main .product-item .product-item-info .productCart {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+}
+main .product-item .product-item-info .productCart .category {
+    padding: 0 15px;
+    border-radius: 20px;
+    color: white;
+    background-color: black;
+}
+
+.fav {
+    border: 0;
+    outline: 0;
+    height: 26px;
+    background-color: transparent;
+}
+.user-list {
+    display: none;
+}

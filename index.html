@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/all.css">
+    <link rel="stylesheet" media="all" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/bootstrap.css">
+    <title>Aro Store</title>
+</head>
+
+<body>
+    <!------------------------------------------- not responsive ------------------------------------------>
+    <header class="shadow position-fixed z-1 sticky-top">
+        <a href="#"><img src="https://wpbingosite.com/wordpress/arostore/wp-content/uploads/2023/04/Logo-demo-400.png"
+                alt="logo" class="logo"></a>
+        <nav>
+            <ul class="list p-0 m-0">
+                <li class="items li-item"><a href="#">Home</a></li>
+                <li class="items li-item"><a href="cartProducts.html">Cart</a></li>
+                <li class="items li-item"><a href="favourite.html">Favourite</a></li>
+            </ul>
+        </nav>
+
+        <nav>
+            <ul class="header-icons m-0 p-0">
+
+                <li> <a href="login.html" title="click to Login or Rigester" id="userIcon"><i
+                            class="fa-solid fa-user"></i></a> </li>
+                <li> <a href="#" title="Favourite" id="favIcon"><i class="fa-solid fa-heart"></i></a> </li>
+                <li> <a href="#" title="Shop Cart"><i class="fa-solid fa-cart-shopping cart2"></i></a> </li>
+            </ul>
+
+
+
+            <ul id="user_info" class=" m-0 p-0 user-icons ">
+                <li><a href="#" id="user"></a></li>
+                <li class="shopCart">
+                    <a href="#" title="Shop Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <span class=" badge">0</span>
+                    <div class="cart_product">
+                        <div></div>
+                        <a href="cartProducts.html" class="cart_product_view m-0 fw-bolder text-center">View All
+                            Products</a>
+                    </div>
+                </li>
+                <li><a href="#" id="logout" title="Log Out"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                </u>
+
+
+
+
+                <ul class="toggle m-0 p-0">
+                    <li class="bar"><a href="#"><i class="fa-solid fa-bars" id="barToggle"></i></a></li>
+                    <li class="bar bar2"><a href="#"><i class="fa-solid fa-circle-xmark" id="barToggle2"></i></a></li>
+                </ul>
+        </nav>
+    </header>
+    <main style="margin-top: 150px;text-align: center;">
+        <div class="container">
+            <div class="search-box mb-5">
+                <select id="selection" class="p-0 m-0 fw-bolder">
+                    <optgroup label="Choose Option" class="w-100">
+                        <option hidden>Category....</option>
+                        <option id="choose1 " value="Category....">Category....</option>
+                        <option id="choose2" value="Product Name">Product Name</option>
+                    </optgroup>
+                </select>
+                <input type="search" class="search" id="searchinput" placeholder="Search here.....">
+                <i class="searchIcon fa-solid fa-magnifying-glass"></i>
+
+            </div>
+
+
+            <div class="product">
+                <div class="row">
+                    <div class="col col-md-4  mb-4">
+                        <div class="product-item shadow">
+                            <img src="https://wpbingosite.com/wordpress/arostore/wp-content/uploads/2023/06/Rectangle-2.jpg"
+                                alt="AirPods" class="productImage">
+                            <div class="product-item-info lh-lg">
+                                <a href="#" class="productName fw-bolder fs-5">Apple AirPods Pro 2023</a>
+                                <div class="productRate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star-half-stroke"></i>
+                                </div>
+                                <p class="productPrice fw-bold">250.00$</p>
+                                <button type="button" id="addCart" class="productBtn btn btn-dark fw-bold mb-4">Add To
+                                    Cart</button>
+                                <div class="productCart">
+                                    <p class="category fw-bold">AirPods</p>
+                                    <button class="fav"><i class="fa-solid fa-heart fs-4"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="JS/poper.js"></script>
+    <script src="JS/jquery.js"></script>
+    <script src="JS/bootstrap.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/user.js"></script>
+</body>
+
+</html>
