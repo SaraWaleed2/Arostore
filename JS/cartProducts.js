@@ -1,10 +1,14 @@
-var productsInCart = JSON.parse(localStorage.getItem("productsInCart"));
+var productsInCart = JSON.parse(localStorage.getItem("productsInCart")) || [];
 var row = document.querySelector(".product .row");
 
-if (productsInCart.length > 0) {
-    drawProductsInCart(productsInCart);
-} else {
-    row.innerHTML = `<h2 style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">No Products in Cart</h2>`;
+updateCartDisplay();
+
+function updateCartDisplay() {
+    if (productsInCart.length > 0) {
+        drawProductsInCart(productsInCart);
+    } else {
+        row.innerHTML = `<h2 style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">No Products in Cart</h2>`;
+    }
 }
 
 function drawProductsInCart(items) {
@@ -18,7 +22,7 @@ function drawProductsInCart(items) {
                         <div class="productRate">
                             ${item.productRate}
                         </div>
-                        <p class="productPrice fw-bold" id="price-${item.id}">${item.productPrice}$</p>
+                        <p class="productPrice fw-bold" id="price-${item.id}">${(item.productPrice * item.quantity).toFixed(2)}$</p>
                         <button type="button" onclick="removeFromCart(${item.id})" class="productBtn btn btn-dark fw-bold mb-4">Remove from Cart</button>
                         <div class="productCart">
                             <p class="category fw-bold">${item.category}</p>
@@ -37,8 +41,8 @@ function drawProductsInCart(items) {
 
     let totalPrice = items.reduce((sum, item) => sum + item.productPrice * item.quantity, 0);
     row.innerHTML += `
-        <div class="my-4 rounded w-50 mx-auto my-auto" style="background-color:rgb(255, 179, 0) ;color: white;" >
-            <h3 class="p-2">Total Price: <span id="totalPrice">${totalPrice}$</span></h3>
+        <div class="my-4 rounded w-50 mx-auto d-block h-25" style="background-color:rgb(255, 179, 0);color: white;">
+            <h3 class="p-2">Total Price: <span id="totalPrice">${totalPrice.toFixed(2)}$</span></h3>
         </div>
     `;
 }
@@ -47,7 +51,7 @@ function increment(id) {
     let item = productsInCart.find((item) => item.id === id);
     if (item) {
         item.quantity++;
-        update(id, item.quantity);
+        updateCartItem(id);
     }
 }
 
@@ -55,26 +59,35 @@ function decrement(id) {
     let item = productsInCart.find((item) => item.id === id);
     if (item && item.quantity > 1) {
         item.quantity--;
-        update(id, item.quantity);
+        updateCartItem(id);
     }
 }
 
-function update(id, quantity) {
-    let quantityProduct = document.getElementById(`quantity-${id}`);
-    let priceElement = document.getElementById(`price-${id}`);
-    let totalPrice = document.getElementById("totalPrice");
-    if (quantityProduct && priceElement && totalPrice) {
-        quantityProduct.textContent = quantity;
-        priceElement.textContent = `${productsInCart.find((item) => item.id === id).productPrice * quantity}$`;
+function updateCartItem(id) {
 
-        let totalPrice = productsInCart.reduce((sum, item) => sum + item.productPrice * item.quantity, 0);
-        totalPrice.textContent = `${totalPrice}$`;
+    let quantityElement = document.getElementById(`quantity-${id}`);
+    let item = productsInCart.find(item => item.id === id);
+    if (quantityElement && item) {
+        quantityElement.textContent = item.quantity;
     }
+    let priceElement = document.getElementById(`price-${id}`);
+    if (priceElement && item) {
+        priceElement.textContent = `${(item.productPrice * item.quantity).toFixed(2)}$`;
+    }
+    updateTotalPrice();
     localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
+}
+
+function updateTotalPrice() {
+    let totalPriceElement = document.getElementById("totalPrice");
+    if (totalPriceElement) {
+        let total = productsInCart.reduce((sum, item) => sum + item.productPrice * item.quantity, 0);
+        totalPriceElement.textContent = `${total.toFixed(2)}$`;
+    }
 }
 
 function removeFromCart(id) {
     productsInCart = productsInCart.filter((item) => item.id !== id);
     localStorage.setItem("productsInCart", JSON.stringify(productsInCart));
-    drawProductsInCart(productsInCart);
+    updateCartDisplay();
 }

@@ -1,14 +1,15 @@
-var favProducts = localStorage.getItem("favProducts")
-var row = document.querySelector(".product .row")
+var favProducts = localStorage.getItem("favProducts");
+var row = document.querySelector(".product .row");
 
 if (favProducts) {
-    let item = JSON.parse(favProducts)
-    drawproductsInCart(item);
-}
-else {
-    row.innerHTML = `
-    <h2 style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">No Favourite Products</h2>
-    `
+    let item = JSON.parse(favProducts);
+    if (item.length > 0) {
+        drawproductsInCart(item);
+    } else {
+        showNoProductsMessage();
+    }
+} else {
+    showNoProductsMessage();
 }
 
 function drawproductsInCart(product) {
@@ -35,17 +36,22 @@ function drawproductsInCart(product) {
     );
 
     row.innerHTML = newProduct.join(" ");
-    row.innerHTML += `
-    <div class="my-4 rounded w-50 mx-auto my-auto" style="background-color:rgb(255, 179, 0) ;color: white;" >
-    <h3 class=" p-2">Favourite Products</h3>
-    </div>
-    `
 }
-
 
 function removeFromCart(id) {
     let favProducts = JSON.parse(localStorage.getItem("favProducts")) || [];
     favProducts = favProducts.filter((item) => item.id !== id);
     localStorage.setItem("favProducts", JSON.stringify(favProducts));
-    drawproductsInCart(favProducts);
+    
+    if (favProducts.length > 0) {
+        drawproductsInCart(favProducts);
+    } else {
+        showNoProductsMessage();
+    }
+}
+
+function showNoProductsMessage() {
+    row.innerHTML = `
+    <h2 style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">No Favourite Products</h2>
+    `;
 }
